@@ -4,6 +4,6 @@
   box-sizing: border-box;
 }
 
-#canvas-body > canvas {
+#canvas-wrapper > canvas {
   background-color: black;
 }

@@ -4,7 +4,7 @@ import Board from './board.js';
 
 class Game {
   constructor(){
-    this.$canvas = document.querySelector('#canvas-body > canvas');
+    this.$canvas = document.querySelector('#canvas-wrapper > canvas');
     this.context = this.$canvas.getContext('2d');
 
     this.$canvas.width = 400;
