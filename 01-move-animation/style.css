@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+button[id$="ArrowBtn"] {
+  width: 20px;
+}
+
 #canvas-wrapper > canvas {
   background-color: black;
 }
