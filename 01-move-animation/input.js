@@ -16,7 +16,7 @@ export default class InputHandler {
       });
       
       button.addEventListener('touchstart', (e) => {
-        e.preventDefault();
+        if(e.cancelable) e.preventDefault();
         this.keys.add(e.target.value);
       });
 
