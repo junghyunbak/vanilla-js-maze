@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button[id$="ArrowBtn"] {
+  width: 20px;
+}
+
+#controller {
+  height: 25px;
+}
+
+#canvas-wrapper {
+  width: 100%;
+  height: calc(100% - 25px);
+}
+
+#canvas-wrapper > canvas {
+  background-color: black;
+}
