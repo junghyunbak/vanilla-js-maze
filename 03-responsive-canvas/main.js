@@ -26,7 +26,8 @@ class Game {
       this.equalizeElementSize(this.$canvas, this.$canvasWrapper);
     });
 
-    this.animate();
+    this.gameStop = true;
+    setTimeout(() => this.animate(), 500); // 이미지 loading 대기 시간
   }
 
   update(){
@@ -39,12 +40,24 @@ class Game {
     this.player.draw();
   }
 
+  startAnimation(){
+    if(!this.gameStop) return;
+    this.gameStop = false;
+    requestAnimationFrame(this.animate);
+  }
+
+  endAnimation(){
+    this.gameStop = true;
+  }
+
   animate = () => {
     const { width, height } = this.$canvas;
     this.context.clearRect(0, 0, width, height);
     this.update();
     this.draw();
-    requestAnimationFrame(this.animate);
+    if(!this.gameStop){
+      requestAnimationFrame(this.animate);
+    }
   }
 
   equalizeElementSize($target, $element){
@@ -54,5 +67,13 @@ class Game {
 }
 
 window.addEventListener('load', () => {
-  new Game();
+  const game = new Game();
+
+  document.querySelector('#gameStartBtn').addEventListener('click', () => {
+    game.startAnimation();
+  });
+
+  document.querySelector('#gameStopBtn').addEventListener('click', () => {
+    game.endAnimation();
+  });
 });
