@@ -36,7 +36,7 @@ class Game {
       this.equalizeElementSize(this.$canvas, this.$canvasWrapper);
     });
 
-    this.gameStop = true;
+    this.isStopped = true;
     setTimeout(() => this.animate(), 500); // 이미지 loading 대기 시간
   }
 
@@ -53,21 +53,20 @@ class Game {
   }
 
   startAnimation(){
-    if(!this.gameStop) return;
-    this.gameStop = false;
+    if(!this.isStopped) return;
+    this.isStopped = false;
     requestAnimationFrame(this.animate);
   }
 
   endAnimation(){
-    this.gameStop = true;
+    this.isStopped = true;
     alert('finish');
   }
 
   resetGame(){
-    this.gameStop = true;
+    this.isStopped = true;
     this.player.init();
     this.animate();
-    alert('reset');
   }
 
   animate = () => {
@@ -75,7 +74,7 @@ class Game {
     this.context.clearRect(0, 0, width, height);
     this.update();
     this.draw();
-    if(!this.gameStop){
+    if(!this.isStopped){
       requestAnimationFrame(this.animate);
     }
   }
