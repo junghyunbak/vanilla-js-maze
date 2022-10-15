@@ -2,8 +2,7 @@ export default class Board {
   constructor(game){
     this.game = game;
 
-    this.image = new Image();
-    this.image.src = './tiles.png';
+    this.image = document.querySelector('#tiles');
   }
 
   update(){}

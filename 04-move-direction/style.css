@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+img {
+  display: none;
+}
+
 button[id$="ArrowBtn"] {
   width: 20px;
 }

@@ -23,8 +23,9 @@ class Game {
     this.board = new Board(this);
     this.input = new InputHandler();
 
+    this.animate();
+
     this.isStopped = true;
-    setTimeout(() => this.animate(), 500); // 이미지 loading 대기 시간
   }
 
   update(){

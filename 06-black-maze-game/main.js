@@ -32,12 +32,14 @@ class Game {
     this.input = new InputHandler();
 
     this.equalizeElementSize(this.$canvas, this.$canvasWrapper);
+    this.animate();
+
     window.addEventListener('resize', () => {
       this.equalizeElementSize(this.$canvas, this.$canvasWrapper);
+      this.animate();
     });
 
     this.isStopped = true;
-    setTimeout(() => this.animate(), 500); // 이미지 loading 대기 시간
   }
 
   update(){
