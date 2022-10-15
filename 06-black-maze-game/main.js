@@ -60,7 +60,7 @@ class Game {
   resetGame(){
     this.isStopped = true;
     this.player.init();
-    this.animate();
+    this.paint();
   }
 
   paint = () => {
