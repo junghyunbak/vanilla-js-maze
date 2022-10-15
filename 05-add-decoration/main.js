@@ -31,27 +31,19 @@ class Game {
     this.decoration = new Decoration(this);
     this.input = new InputHandler();
 
+    this.prevTimestamp;
+    this.fps = 60;
+    this.fpsInterval = 1000 / this.fps;
+
     this.equalizeElementSize(this.$canvas, this.$canvasWrapper);
-    this.animate();
+    this.paint();
 
     window.addEventListener('resize', () => {
       this.equalizeElementSize(this.$canvas, this.$canvasWrapper);
-      this.animate();
+      this.paint();
     });
 
     this.isStopped = true;
-  }
-
-  update(){
-    this.board.update();
-    this.decoration.update();
-    this.player.update();
-  }
-
-  draw(){
-    this.board.draw();
-    this.decoration.draw();
-    this.player.draw();
   }
 
   startAnimation(){
@@ -64,11 +56,36 @@ class Game {
     this.isStopped = true;
   }
 
-  animate = () => {
-    const { width, height } = this.$canvas;
-    this.context.clearRect(0, 0, width, height);
-    this.update();
-    this.draw();
+  paint = () => {
+    // clear
+    this.context.clearRect(
+      0,
+      0,
+      this.$canvas.width,
+      this.$canvas.height
+    );
+    // update
+    this.board.update();
+    this.decoration.update();
+    this.player.update();
+    // draw
+    this.board.draw();
+    this.decoration.draw();
+    this.player.draw();
+  }
+
+  animate = (timestamp) => {
+    if(this.prevTimestamp === undefined){
+      this.prevTimestamp = window.performance.now();
+    }
+
+    const elapsed = timestamp - this.prevTimestamp;
+
+    if(elapsed >= this.fpsInterval){
+      this.prevTimestamp = timestamp - (elapsed % this.fpsInterval);
+      this.paint();
+    }
+
     if(!this.isStopped){
       requestAnimationFrame(this.animate);
     }
