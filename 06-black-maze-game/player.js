@@ -49,8 +49,7 @@ export default class Player {
       ],
     ];
 
-    this.image = new Image();
-    this.image.src = './M_01.png';
+    this.image = document.querySelector('#tinyMale01');
 
     this.exit = false;
   }

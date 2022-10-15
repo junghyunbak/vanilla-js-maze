@@ -2,8 +2,7 @@ export default class Board {
   constructor(game){
     this.game = game;
 
-    this.image = new Image();
-    this.image.src = './tiles.png';
+    this.image = document.querySelector('#tiles');
 
     this.groundCoord = [0, 0, 32, 32];
     this.wallCoord = [32, 0, 32, 32];
