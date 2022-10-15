@@ -146,21 +146,21 @@ export default class Player {
     if(y < 0 || y >= r || x < 0 || x >= c) return false;
     if(map[y][x]) return false;
     return true;
- }
+  }
 
   getNextPosition(key){
     const nextPos = { ny: this.mapPos.y, nx: this.mapPos.x };
     switch(key){
-      case 'ArrowRight':
+      case ARROW_TYPE.RIGHT:
         nextPos.nx += 1;
         break;
-      case 'ArrowLeft':
+      case ARROW_TYPE.LEFT:
         nextPos.nx -= 1;
         break;
-      case 'ArrowDown':
+      case ARROW_TYPE.DOWN:
         nextPos.ny += 1;
         break;
-      case 'ArrowUp':
+      case ARROW_TYPE.UP:
         nextPos.ny -= 1;
         break;
     }
