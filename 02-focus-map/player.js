@@ -1,3 +1,10 @@
+const ARROW_TYPE = Object.freeze({
+  RIGHT: 'ArrowRight',
+  LEFT: 'ArrowLeft',
+  DOWN: 'ArrowDown',
+  UP: 'ArrowUp',
+});
+
 export default class Player {
   constructor(game){
     this.game = game;
